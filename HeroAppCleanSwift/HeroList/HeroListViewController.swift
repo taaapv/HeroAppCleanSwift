@@ -16,6 +16,7 @@ class HeroListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var interactor: HeroListBusinessLogic?
+    var router: (NSObjectProtocol & HeroListRoutingLogic & HeroListDataPassing)?
     
     private var rows: [CellIdentifiable] = []
     
@@ -23,6 +24,17 @@ class HeroListViewController: UIViewController {
         super.viewDidLoad()
         HeroListConfigurator.shared.configure(with: self)
         getHeroes()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router {
+                if router.responds(to: selector) {
+                    router.perform(selector, with: segue)
+                }
+            }
+        }
     }
     
     private func getHeroes() {

@@ -14,10 +14,14 @@ class HeroListConfigurator {
     func configure(with viewController: HeroListViewController) {
         let interactor = HeroListInteractor()
         let presenter = HeroListPresenter()
+        let router = HeroListRouter()
         
         viewController.interactor = interactor
+        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
     }
     
 }

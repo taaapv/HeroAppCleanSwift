@@ -10,10 +10,20 @@ import Foundation
 enum HeroDetails {
     enum ShowDetails {
         struct Response {
-            
+            let heroName: String?
+            let imageData: Data?
+            let powerStats: String?
+            let biography: String?
+            let work: String?
+            let isFavorite: Bool
         }
         struct ViewModel {
-            
+            let heroName: String
+            let imageData: Data
+            let powerStats: String
+            let biography: String
+            let work: String
+            let isFavorite: Bool
         }
     }
 }

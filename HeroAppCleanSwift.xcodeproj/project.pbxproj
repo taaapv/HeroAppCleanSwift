@@ -27,6 +27,7 @@
 		8FB3AC43297820B10058866D /* HeroDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3AC42297820B10058866D /* HeroDetailsRouter.swift */; };
 		8FB3AC45297820C40058866D /* HeroListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3AC44297820C40058866D /* HeroListRouter.swift */; };
 		8FB3AC47297821F90058866D /* HeroDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3AC46297821F90058866D /* HeroDetailsModels.swift */; };
+		8FB3AC49297837530058866D /* HeroDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB3AC48297837530058866D /* HeroDetailsWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		8FB3AC42297820B10058866D /* HeroDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsRouter.swift; sourceTree = "<group>"; };
 		8FB3AC44297820C40058866D /* HeroListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListRouter.swift; sourceTree = "<group>"; };
 		8FB3AC46297821F90058866D /* HeroDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsModels.swift; sourceTree = "<group>"; };
+		8FB3AC48297837530058866D /* HeroDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailsWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				8FB3AC3C29781F550058866D /* HeroDetailsViewController.swift */,
 				8FB3AC3E2978208C0058866D /* HeroDetailsInteractor.swift */,
 				8FB3AC402978209A0058866D /* HeroDetailsPresenter.swift */,
+				8FB3AC48297837530058866D /* HeroDetailsWorker.swift */,
 				8FB3AC42297820B10058866D /* HeroDetailsRouter.swift */,
 			);
 			path = HeroDetails;
@@ -232,6 +235,7 @@
 				8FB3AC3F2978208C0058866D /* HeroDetailsInteractor.swift in Sources */,
 				8F77E93829755D5E0039C074 /* HeroListModels.swift in Sources */,
 				8F77E94529756C800039C074 /* ImageManager.swift in Sources */,
+				8FB3AC49297837530058866D /* HeroDetailsWorker.swift in Sources */,
 				8F77E93429755A020039C074 /* HeroListViewController.swift in Sources */,
 				8F77E94029755FCB0039C074 /* HeroListConfigurator.swift in Sources */,
 				8F77E94729756E850039C074 /* NetworkManager.swift in Sources */,

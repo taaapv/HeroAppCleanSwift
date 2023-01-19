@@ -9,6 +9,8 @@ import UIKit
 
 protocol HeroDetailsDisplayLogic: AnyObject {
     func displayHero(viewModel: HeroDetails.ShowDetails.ViewModel)
+    func displayFavoriteStatus(viewModel: HeroDetails.SetFavoriteStatus.ViewModel)
+    func displayAlert(viewModel: HeroDetails.AddAlert.ViewModel)
 }
 
 class HeroDetailsViewController: UIViewController {
@@ -19,6 +21,7 @@ class HeroDetailsViewController: UIViewController {
     @IBOutlet weak var biographyLabel: UILabel!
     @IBOutlet weak var workLabel: UILabel!
     @IBOutlet weak var isFavoriteButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     var interactor: HeroDetailsBusinessLogic?
     var router: (NSObjectProtocol & HeroDetailsRoutingLogic & HeroDetailsDataPassing)?
@@ -36,10 +39,16 @@ class HeroDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveButton.layer.cornerRadius = 15
         passRequest()
     }
     
     @IBAction func favoriteButtonPressed() {
+        interactor?.setFavoriteStatus()
+    }
+    
+    @IBAction func saveButtonPressed() {
+        interactor?.saveButtonTapped()
     }
     
     private func passRequest() {
@@ -59,7 +68,6 @@ class HeroDetailsViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
-    
 }
 
 extension HeroDetailsViewController: HeroDetailsDisplayLogic {
@@ -70,5 +78,24 @@ extension HeroDetailsViewController: HeroDetailsDisplayLogic {
         workLabel.text = viewModel.work
         heroImage.image = UIImage(data: viewModel.imageData)
         isFavoriteButton.tintColor = viewModel.isFavorite ? .red : .gray
+        saveButton.setTitle(viewModel.saveButtonTitle, for: .normal)
+    }
+    
+    func displayFavoriteStatus(viewModel: HeroDetails.SetFavoriteStatus.ViewModel) {
+        isFavoriteButton.tintColor = viewModel.isFavorite ? .red : .gray
+    }
+    
+    func displayAlert(viewModel: HeroDetails.AddAlert.ViewModel) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: viewModel.title,
+                message: viewModel.message,
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
     }
 }

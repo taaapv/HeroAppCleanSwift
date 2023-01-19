@@ -16,7 +16,9 @@ enum HeroDetails {
             let biography: String?
             let work: String?
             let isFavorite: Bool
+            let saveButtonTitle: String
         }
+        
         struct ViewModel {
             let heroName: String
             let imageData: Data
@@ -24,6 +26,29 @@ enum HeroDetails {
             let biography: String
             let work: String
             let isFavorite: Bool
+            let saveButtonTitle: String
+        }
+    }
+    
+    enum SetFavoriteStatus {
+        struct Response {
+            let isFavorite: Bool
+        }
+        
+        struct ViewModel {
+            let isFavorite: Bool
+        }
+    }
+    
+    enum AddAlert {
+        struct Response {
+            let title: String
+            let message: String
+        }
+        
+        struct ViewModel {
+            let title: String
+            let message: String
         }
     }
 }

@@ -23,9 +23,14 @@ class HeroTableViewCell: UITableViewCell, CellModelRepresentable {
         var content = defaultContentConfiguration()
         content.text = viewModel.name
         
-        if let imageData = ImageManager.shared.fetchImage(with: viewModel.imageUrl) {
-            content.image = UIImage(data: imageData)
+        ImageManager.shared.fetchImage(with: viewModel.imageUrl) { [unowned self] result in
+            switch result {
+            case .success(let imageData):
+                content.image = UIImage(data: imageData)
+                self.contentConfiguration = content
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
-        contentConfiguration = content
     }
 }

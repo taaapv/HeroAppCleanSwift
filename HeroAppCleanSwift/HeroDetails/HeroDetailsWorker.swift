@@ -8,7 +8,11 @@
 import Foundation
 
 class HeroDetailsWorker {
-    func getImage(from urlString: String?) -> Data? {
-        ImageManager.shared.fetchImage(with: urlString)
+    func setFavoriteStatus(for key: Int, with value: Bool) {
+        DataManager.shared.setFavoriteStatus(for: key, with: value)
+    }
+    
+    func getFavoriteStatus(for key: Int) -> Bool {
+        DataManager.shared.getFavoriteStatus(for: key)
     }
 }

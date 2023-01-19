@@ -32,12 +32,12 @@ class HeroListRouter: NSObject, HeroListRoutingLogic, HeroListDataPassing {
             navigateToHeroDetails(sourse: viewController!, destination: destinationVC)
         }
     }
-        private func navigateToHeroDetails(sourse: HeroListViewController, destination: HeroDetailsViewController) {
-            sourse.show(destination, sender: nil)
-        }
-        
-        private func passDataToHeroDetails(sourse: HeroListDataStore, destination: inout HeroDetailsDataStore) {
-            guard let indexPath = viewController?.tableView.indexPathForSelectedRow else { return }
-            destination.hero = sourse.heroes[indexPath.row]
-        }
+    private func navigateToHeroDetails(sourse: HeroListViewController, destination: HeroDetailsViewController) {
+        sourse.show(destination, sender: nil)
+    }
+    
+    private func passDataToHeroDetails(sourse: HeroListDataStore, destination: inout HeroDetailsDataStore) {
+        guard let indexPath = viewController?.tableView.indexPathForSelectedRow else { return }
+        destination.hero = sourse.heroes[indexPath.row]
+    }
 }

@@ -30,12 +30,16 @@ enum HeroList {
                 }
                 
                 var cellHeight: Double {
-                    100
+                    110
                 }
                 
                 init(hero: Hero) {
                     name = hero.name
                     imageUrl = hero.images.lg
+                }
+                
+                func compareImages(with currentImageUrl: String) -> Bool {
+                     return imageUrl == currentImageUrl
                 }
             }
             

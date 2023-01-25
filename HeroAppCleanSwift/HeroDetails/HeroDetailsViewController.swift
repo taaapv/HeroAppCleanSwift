@@ -16,7 +16,11 @@ protocol HeroDetailsDisplayLogic: AnyObject {
 class HeroDetailsViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var heroImage: UIImageView!
+    @IBOutlet weak var heroImage: UIImageView! {
+        didSet {
+            heroImage.layer.cornerRadius = 20
+        }
+    }
     @IBOutlet weak var powerStatsLabel: UILabel!
     @IBOutlet weak var biographyLabel: UILabel!
     @IBOutlet weak var workLabel: UILabel!

@@ -12,25 +12,39 @@ protocol CellModelRepresentable {
 }
 
 class HeroTableViewCell: UITableViewCell, CellModelRepresentable {
+    
+    @IBOutlet weak var heroNameLabel: UILabel!
+    @IBOutlet weak var heroImageView: UIImageView! {
+        didSet {
+            heroImageView.layer.cornerRadius = 30
+        }
+    }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var viewModel: CellIdentifiable? {
         didSet {
             updateViews()
         }
     }
-
+    
     private func updateViews() {
         guard let viewModel = viewModel as? HeroCellViewModel else { return }
-        var content = defaultContentConfiguration()
-        content.text = viewModel.name
+        heroNameLabel.text = viewModel.name
         
-        ImageManager.shared.fetchImage(with: viewModel.imageUrl) { [unowned self] result in
-            switch result {
-            case .success(let imageData):
-                content.image = UIImage(data: imageData)
-                self.contentConfiguration = content
-            case .failure(let error):
-                print(error.localizedDescription)
+        let imageUrl = viewModel.imageUrl
+        heroImageView.image = nil
+            
+            ImageManager.shared.fetchImage(with: imageUrl) { [unowned self] result in
+                switch result {
+                case .success(let imageData):
+                    if viewModel.compareImages(with: imageUrl) {
+                        self.activityIndicator.stopAnimating()
+                        self.heroImageView.image = UIImage(data: imageData)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
-    }
+    
 }

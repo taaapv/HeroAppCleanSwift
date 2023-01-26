@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 typealias HeroCellViewModel = HeroList.ShowHeros.ViewModel.HeroCellViewModel
 
 protocol CellIdentifiable {
@@ -36,10 +37,6 @@ enum HeroList {
                 init(hero: Hero) {
                     name = hero.name
                     imageUrl = hero.images.lg
-                }
-                
-                func compareImages(with currentImageUrl: String) -> Bool {
-                     return imageUrl == currentImageUrl
                 }
             }
             
